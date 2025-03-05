@@ -59,16 +59,16 @@ const Home = () => {
           throw new Error("Väderdata saknas i API-svaret!");
         }
 
-        // Gruppar prognoser efter datum och tar en per dag
+        
         const uniqueDays = {};
         const dailyForecasts = data.list.filter((forecast) => {
-            const date = new Date(forecast.dt * 1000).toISOString().split("T")[0]; // YYYY-MM-DD format
+            const date = new Date(forecast.dt * 1000).toISOString().split("T")[0]; 
             if (!uniqueDays[date]) {
               uniqueDays[date] = true;
               return true;
             }
             return false;
-          }).slice(0, 6); // Hämtar exakt 6 dagar
+          }).slice(0, 6); 
         setForecast(dailyForecasts);
       })
       .catch((err) => setError(err.message));
